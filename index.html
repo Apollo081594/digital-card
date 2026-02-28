@@ -22,11 +22,9 @@
 
         .luxury-bg {
             min-height: 100vh;
-            /* Overlay to ensure text readability + RCBC Banner */
             background: linear-gradient(rgba(0, 45, 114, 0.85), rgba(0, 26, 65, 0.9)), 
                         url('https://www.rcbc.com/uploads/media/Homepage-Top-Banner-(Desktop)-V7-(1).png');
             background-size: cover;
-            /* 70% ensures the people in hexagons stay visible on mobile */
             background-position: 70% center;
             background-attachment: fixed;
             display: flex;
@@ -35,7 +33,6 @@
             padding: 20px;
         }
 
-        /* Hexagon Profile Shape */
         .hexagon-profile {
             width: 160px;
             height: 180px;
@@ -72,31 +69,31 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
 
+        /* Unique Style for Save Contact Button */
+        .btn-save-contact {
+            background: var(--gold-gradient);
+            color: #002D72;
+            font-weight: 700;
+            border: none;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-save-contact:hover {
+            transform: translateY(-3px) scale(1.02);
+            filter: brightness(1.1);
+        }
+
         .qr-container {
             background: white;
             padding: 10px;
             border-radius: 16px;
             position: relative;
             box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+            max-width: 160px;
         }
 
-        .qr-logo {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 40px;
-            height: 40px;
-            background: white;
-            padding: 2px;
-            border-radius: 4px;
-        }
-
-        /* Mobile specific adjustments */
         @media (max-width: 640px) {
-            .luxury-bg {
-                background-position: 85% center; /* Focus even more on the hexagon people on small screens */
-            }
+            .luxury-bg { background-position: 85% center; }
         }
     </style>
 </head>
@@ -121,6 +118,10 @@
             </div>
 
             <div class="grid grid-cols-1 gap-3 mb-10">
+                <button onclick="downloadVCard()" class="btn-save-contact py-4 px-6 rounded-2xl flex items-center justify-center mb-2 transition-all">
+                    <i class="fas fa-user-plus mr-3"></i> SAVE TO CONTACTS
+                </button>
+
                 <a href="tel:+639494404522" class="btn-luxury py-3.5 px-6 rounded-2xl flex items-center justify-between">
                     <span><i class="fas fa-phone-alt mr-3 text-[#D4AF37]"></i> Direct Call</span>
                     <i class="fas fa-chevron-right text-[10px] opacity-40"></i>
@@ -137,27 +138,40 @@
                     <span><i class="fas fa-envelope mr-3 text-[#D4AF37]"></i> Email Me</span>
                     <i class="fas fa-chevron-right text-[10px] opacity-40"></i>
                 </a>
-                <a href="#" class="btn-luxury py-3.5 px-6 rounded-2xl flex items-center justify-between">
-                    <span><i class="fas fa-calendar-check mr-3 text-[#D4AF37]"></i> Book a Meeting</span>
-                    <i class="fas fa-chevron-right text-[10px] opacity-40"></i>
-                </a>
             </div>
 
             <div class="mt-4 pt-8 border-t border-white/10 flex flex-col items-center">
-                <p class="text-[10px] text-blue-200/60 mb-5 tracking-[0.3em] uppercase font-bold">Scan to Save Contact</p>
                 <div class="qr-container">
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=tel:+639494404522&color=002d72" alt="QR Code">
-                    <div class="qr-logo shadow-sm">
-                       <img src="https://www.rcbc.com/assets/images/rcbc-logo.png" class="w-full h-full object-contain" alt="RCBC">
-                    </div>
+                    <img src="QR.png" alt="QR Code" class="w-full h-auto">
                 </div>
                 <p class="mt-6 text-[9px] text-white/30 uppercase tracking-widest">RCBC Hexagon Club Premium Member</p>
             </div>
         </div>
     </div>
 
+    <script>
+        function downloadVCard() {
+            const vcardData = [
+                "BEGIN:VCARD",
+                "VERSION:3.0",
+                "FN:Christian Rey Baron",
+                "ORG:RCBC;Hexagon Club",
+                "TITLE:Systems Analyst",
+                "TEL;TYPE=CELL,VOICE:+639494404522",
+                "EMAIL;TYPE=PREF,INTERNET:crbaron@rcbc.com",
+                "URL:https://www.rcbc.com",
+                "END:VCARD"
+            ].join("\n");
+
+            const blob = new Blob([vcardData], { type: "text/vcard" });
+            const url = window.URL.createObjectURL(blob);
+            const newLink = document.createElement("a");
+            newLink.href = url;
+            newLink.setAttribute("download", "Christian_Rey_Baron.vcf");
+            document.body.appendChild(newLink);
+            newLink.click();
+            document.body.removeChild(newLink);
+        }
+    </script>
 </body>
-
 </html>
-
-
