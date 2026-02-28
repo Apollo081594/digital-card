@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christian Rey Baron | RCBC Hexagon Club</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --rcbc-blue: #002D72;
+            --hexagon-gold: #D4AF37;
+            --gold-gradient: linear-gradient(135deg, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+        }
+
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            color: white;
+        }
+
+        .luxury-bg {
+            min-height: 100vh;
+            /* Overlay to ensure text readability + RCBC Banner */
+            background: linear-gradient(rgba(0, 45, 114, 0.85), rgba(0, 26, 65, 0.9)), 
+                        url('https://www.rcbc.com/uploads/media/Homepage-Top-Banner-(Desktop)-V7-(1).png');
+            background-size: cover;
+            /* 70% ensures the people in hexagons stay visible on mobile */
+            background-position: 70% center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* Hexagon Profile Shape */
+        .hexagon-profile {
+            width: 160px;
+            height: 180px;
+            background: var(--gold-gradient);
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4px;
+            margin: 0 auto;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.3));
+        }
+
+        .hexagon-inner {
+            width: 100%;
+            height: 100%;
+            background: url('https://www.shutterstock.com/image-photo/professional-male-banker-sits-cabinet-260nw-1110316835.jpg') center/cover;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            background-position: top center;
+        }
+
+        .btn-luxury {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .btn-luxury:hover {
+            background: var(--gold-gradient);
+            color: #002D72;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .qr-container {
+            background: white;
+            padding: 10px;
+            border-radius: 16px;
+            position: relative;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+        }
+
+        .qr-logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            background: white;
+            padding: 2px;
+            border-radius: 4px;
+        }
+
+        /* Mobile specific adjustments */
+        @media (max-width: 640px) {
+            .luxury-bg {
+                background-position: 85% center; /* Focus even more on the hexagon people on small screens */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="luxury-bg">
+        <div class="max-w-md w-full bg-opacity-10 bg-white backdrop-blur-2xl rounded-[2.5rem] p-8 shadow-2xl border border-white/20 text-center">
+            
+            <div class="hexagon-profile mb-6">
+                <div class="hexagon-inner"></div>
+            </div>
+
+            <h1 class="text-3xl font-bold tracking-tight mb-1" style="color: #FCF6BA;">Christian Rey Baron</h1>
+            <p class="text-blue-100 font-medium uppercase tracking-[0.2em] text-xs mb-3">Systems Analyst</p>
+            
+            <div class="flex items-center justify-center gap-2 mb-8">
+                <span class="px-4 py-1.5 bg-[#D4AF37]/20 text-[#FCF6BA] rounded-full text-[10px] font-bold border border-[#D4AF37]/40 tracking-widest">
+                    <i class="fas fa-hexagon-nodes mr-1"></i> HEXAGON CLUB
+                </span>
+                <span class="text-white/30">|</span>
+                <span class="text-white font-semibold text-sm">RCBC</span>
+            </div>
+
+            <div class="grid grid-cols-1 gap-3 mb-10">
+                <a href="tel:+639494404522" class="btn-luxury py-3.5 px-6 rounded-2xl flex items-center justify-between">
+                    <span><i class="fas fa-phone-alt mr-3 text-[#D4AF37]"></i> Direct Call</span>
+                    <i class="fas fa-chevron-right text-[10px] opacity-40"></i>
+                </a>
+                <a href="https://wa.me/639494404522" class="btn-luxury py-3.5 px-6 rounded-2xl flex items-center justify-between">
+                    <span><i class="fab fa-whatsapp mr-3 text-[#D4AF37]"></i> WhatsApp</span>
+                    <i class="fas fa-chevron-right text-[10px] opacity-40"></i>
+                </a>
+                <a href="viber://chat?number=639494404522" class="btn-luxury py-3.5 px-6 rounded-2xl flex items-center justify-between">
+                    <span><i class="fab fa-viber mr-3 text-[#D4AF37]"></i> Viber</span>
+                    <i class="fas fa-chevron-right text-[10px] opacity-40"></i>
+                </a>
+                <a href="mailto:crbaron@rcbc.com" class="btn-luxury py-3.5 px-6 rounded-2xl flex items-center justify-between">
+                    <span><i class="fas fa-envelope mr-3 text-[#D4AF37]"></i> Email Me</span>
+                    <i class="fas fa-chevron-right text-[10px] opacity-40"></i>
+                </a>
+                <a href="#" class="btn-luxury py-3.5 px-6 rounded-2xl flex items-center justify-between">
+                    <span><i class="fas fa-calendar-check mr-3 text-[#D4AF37]"></i> Book a Meeting</span>
+                    <i class="fas fa-chevron-right text-[10px] opacity-40"></i>
+                </a>
+            </div>
+
+            <div class="mt-4 pt-8 border-t border-white/10 flex flex-col items-center">
+                <p class="text-[10px] text-blue-200/60 mb-5 tracking-[0.3em] uppercase font-bold">Scan to Save Contact</p>
+                <div class="qr-container">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=tel:+639494404522&color=002d72" alt="QR Code">
+                    <div class="qr-logo shadow-sm">
+                       <img src="https://www.rcbc.com/assets/images/rcbc-logo.png" class="w-full h-full object-contain" alt="RCBC">
+                    </div>
+                </div>
+                <p class="mt-6 text-[9px] text-white/30 uppercase tracking-widest">RCBC Hexagon Club Premium Member</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
